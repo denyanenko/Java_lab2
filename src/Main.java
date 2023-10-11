@@ -30,15 +30,15 @@ public class Main {
             System.out.print("Кількість стовпців повинна бути натуральним числом");
             return;
         }
-        int[][] A = new int[n][m];
+        float[][] A = new float[n][m];
         generateRandomMatrix(A);
-        int[][] B = new int[n][m];
+        float[][] B = new float[n][m];
         generateRandomMatrix(B);
         System.out.println("Матриця A");
         outputMatrix(A);
         System.out.println("Матриця B");
         outputMatrix(B);
-        int[][] C = new int[n][m];
+        float[][] C = new float[n][m];
         matrixXOR(A, B, C);
         System.out.println("Матриця C");
         outputMatrix(C);
@@ -47,7 +47,7 @@ public class Main {
 
     }
 
-    static void generateRandomMatrix(int[][] matrix) {
+    static void generateRandomMatrix(float[][] matrix) {
         Random random = new Random();
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
@@ -58,10 +58,10 @@ public class Main {
 
     }
 
-    static void outputMatrix(int[][] matrix) {
+    static void outputMatrix(float[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j] + "\t");
+                System.out.printf("%.0f\t", matrix[i][j]);
 
             }
             System.out.println();
@@ -69,19 +69,19 @@ public class Main {
 
     }
 
-    static void matrixXOR(int[][] matrixA, int[][] matrixB, int[][] matrixC) {
+    static void matrixXOR(float[][] matrixA, float[][] matrixB, float[][] matrixC) {
         for (int i = 0; i < matrixA.length; i++) {
             for (int j = 0; j < matrixA[i].length; j++) {
-                matrixC[i][j] = matrixA[i][j] ^ matrixB[i][j];
+                matrixC[i][j] = (int) matrixA[i][j] ^ (int) matrixB[i][j];
             }
         }
     }
 
-    public static int sumOfSmallestElementsInColumns(int[][] matrix) {
-        int sum = 0;
+    public static float sumOfSmallestElementsInColumns(float[][] matrix) {
+        float sum = 0;
 
         for (int j = 0; j < matrix[0].length; j++) {
-            int min = matrix[0][j];
+            float min = matrix[0][j];
 
             for (int i = 1; i < matrix.length; i++) {
                 if (matrix[i][j] < min) {
